@@ -1,5 +1,5 @@
 from graphics import *
-import filesys
+import WASH, filesys, WalStack
 
 class icon():
     def __init__(self, path):
