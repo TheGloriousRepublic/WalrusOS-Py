@@ -8,20 +8,21 @@ class shell:
         STRING = 'STRING'
         INT = 'INT'
         DEC = 'DEC'
+        NAME = 'NAME'
         
-        self.tags=[
-            (r'[0-9]+',               INT), #remove this
-            (r'("[^"]*"|\'[^\']*\')', STRING),
-            (r'\+',                   RESERVED),
-            (r'-',                    RESERVED),
-            (r'\*',                   RESERVED),
-            (r'/',                    RESERVED),
-            (r'^',                    RESERVED),
-            (r'\(',                   RESERVED),
-            (r'\)',                   RESERVED),
-            #(r'[0-9]+',               INT),
-            (r'[0-9]+\.[0-9]+',       DEC),
-            ]
+        self.tags = {
+            (r'("[^"]*"|\'[^\']*\')',   STRING),
+            (r'\+',                     RESERVED),
+            (r'-',                      RESERVED),
+            (r'\*',                     RESERVED),
+            (r'/',                      RESERVED),
+            (r'\^',                     RESERVED),
+            (r'\(',                     RESERVED),
+            (r'\)',                     RESERVED),
+            (r'[0-9]+\.[0-9]+',         DEC),
+            (r'[0-9]+',                 INT),
+            (r'[a-zA-Z_][a-zA-Z0-9_]*', NAME)
+            }
 
         i = 0
         tokens = []
@@ -29,14 +30,17 @@ class shell:
             match = None
             for x in self.tags:
                 pattern, tag = x
+                print pattern
                 r = re.compile(pattern)
-                match=r.match(com, i)
+                match = r.match(com, i)
                 if match:
                     text = match.group(0)
                     if tag:
                         tokens.append((text, tag))
                     i = match.end(0)
                     break
+            if match == None:
+                raise ValueError('Invalid Character')
         return tokens
                 
 
