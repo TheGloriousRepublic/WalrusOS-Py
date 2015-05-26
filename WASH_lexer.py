@@ -22,7 +22,7 @@ tags = {
     (r'\.',                     RESERVED)
     }
 
-def lex(com)
+def lex(com):
     i = 0
     tokens = []
     while i < len(com):

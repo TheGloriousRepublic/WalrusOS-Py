@@ -1,4 +1,4 @@
-import WASH
+import WaSh
 
 sh = WASH.shell()
 m=raw_input('mode>').upper()

@@ -1,7 +1,7 @@
 import filesys
 import processes
-import WASH_lexer
-import WASH_parser
+import WaSh_lexer
+import WaSh_parser
 
 class shell:
     def lex(self, com):
