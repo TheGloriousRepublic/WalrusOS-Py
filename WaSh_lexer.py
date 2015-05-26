@@ -7,6 +7,9 @@ NAME = 'NAME'
 
 tags = {
     (r'("[^"]*"|\'[^\']*\')',   STRING),
+    (r'==',                     RESERVED),
+    (r':=',                     RESERVED),
+    (r'=',                      RESERVED),
     (r'\+',                     RESERVED),
     (r'-',                      RESERVED),
     (r'\*',                     RESERVED),
