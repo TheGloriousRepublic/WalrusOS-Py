@@ -22,5 +22,5 @@ def aexp_group():
 def aexp_term():
     return aexp_value() | aexp_group()
 
-def process_biexp(op):
+def process_BinExp(op):
     return lambda l, r: BiExp(op, l, r)
