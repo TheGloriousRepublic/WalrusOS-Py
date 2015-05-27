@@ -5,14 +5,14 @@ import WaSh_parser
 
 class shell:
     def lex(self, com):
-        WASH_lexer.lex(com)
+        return(WaSh_lexer.lex(com))
 
     def parse(self, tok):
-        WASH_parser.parse(tok)
+        WaSh_parser.WaSh_parse(tok)
+
+    def AST(self):
+        pass
     
-	def AST(self):
-		pass
-	
     def do(self, com):
         self.commands={'echo'}
         return self.execute(self.parse(self.lex(com)))
