@@ -1,15 +1,6 @@
-from graphics import *
-import WaSh, filesys, WalStack
+from graphicsmaker import *
 
-class icon():
-    def __init__(self, path):
-        self.path=path
-    def setIcon(self, path):
-        self.path=path
-    def delete(self):
-        del self
+loadImg(10, 10, '4 4 red black red black black red black red red black red black black red black red')
 
-data = filesys.fileSys(eval(open('data.txt').read()))
-dtWidth = 600
-dtHeight = 600
-desktop = GraphWin('Desktop', dtWidth, dtHeight)
+
+root.mainloop()
