@@ -10,14 +10,16 @@ def chunk(seq, size):
 def execute(code, regs=[]):
 
     if not regs:
-        i=0
-        while i<65535:
+        i = 0
+        while i < 65535:
             regs.append(0)
-            i+=1
+            i += 1
 
-    instructions=[]
+    instructions = []
 
-    if len(code)%5 != 0:
+    marks = []
+
+    if len(code) % 5 != 0:
         raise MachineCodeError('code is malformed (len%5 != 0')
 
     for x in chunk(raw, 5):
@@ -27,9 +29,9 @@ def execute(code, regs=[]):
         instructions.append((prim[0], int(binary(prim[1])+binary(prim[2]), 2), int(binary(prim[3])+binary(prim[4]), 2)))#Generate Tuple and add it to list
 
     for x in instructions:
-        c=x[0]
-        a1=x[1]
-        a2=x[2]
+        c = x[0]
+        a1 =x[1]
+        a2 = x[2]
         
         if c == 0: #NIL instruction: Does nothing
             pass
@@ -84,5 +86,9 @@ def execute(code, regs=[]):
 
         elif c == 17: #XNR instruction: bitwise xnor reg1 by reg2
             regs[a1] = ~(regs[a1]^regs[a2])
+            
         elif c == 18: #NEG instruction: bitwise negate reg1
             regs[a1] = ~regs[a1]
+
+        elif c == 19: #MRK instruction: mark a part of the code
+            
