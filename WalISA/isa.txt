@@ -13,12 +13,12 @@
 0C: AND
 0D: ORR
 0E: XOR
-0F: NEG
-10: 
-11: 
-12: 
-13: 
-14: 
+0F: NND
+10: NOR
+11: XNR
+12: NEG
+13: MRK
+14: IF0
 15: 
 16: 
 17: 
